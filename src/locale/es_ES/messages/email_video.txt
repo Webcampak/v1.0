@@ -1,0 +1,2 @@
+Hola, Webcampak acaba de terminar la creación de un video personalizado para esta fuente. El video se puede descargar a través de la interfaz del visor o por medio de FTP en el directorio /videos/ correspondiente a esta fuente. Gracias, su Webcampak 
+

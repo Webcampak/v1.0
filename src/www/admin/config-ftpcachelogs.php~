@@ -1,0 +1,55 @@
+<?php
+// Copyright 2010 Infracom & Eurotechnia (support@webcampak.com)
+// This file is part of the Webcampak project.
+// Webcampak is free software: you can redistribute it and/or modify it 
+// under the terms of the GNU General Public License as published by 
+// the Free Software Foundation, either version 3 of the License, 
+// or (at your option) any later version.
+
+// Webcampak is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+// even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+// See the GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License along with Webcampak. 
+// If not, see http://www.gnu.org/licenses/.
+
+
+require("../../etc/config.php");
+
+
+$configsection = strip_tags($_GET['section']);
+$smarty->assign('CONFIGSECTION', $configsection);
+ 
+		if (is_file($config_logdirectory . "ftpcachearchives.log")) {		
+			$displayphotolog = file_get_contents($config_logdirectory . "ftpcachearchives.log");
+			$smarty->assign('DISP_FTPCACHEARCHIVES', $displayphotolog);
+		}
+		if (is_file($config_logdirectory . "ftpcachehotlink.log")) {		
+			$displayphotolog = file_get_contents($config_logdirectory . "ftpcachehotlink.log");
+			$smarty->assign('DISP_FTPCACHEHOTLINK', $displayphotolog);
+		}		
+		if (strip_tags($_GET['submit']) == "1") {
+		   if (strip_tags($_POST['cfgftpcachedebugprolong']) == "yes") {
+				wito_setconfig($config_etcdirectory . "config-general.sh", "cfgftpcachedebugprolong", "yes");	
+			} else {
+				wito_setconfig($config_etcdirectory . "config-general.sh", "cfgftpcachedebugprolong", "no");
+			}		
+		}
+		if (wito_getconfig($config_etcdirectory . "config-general.sh", "cfgftpcachedebugprolong") == "yes") {
+			$smarty->assign('CFGFTPCACHEDEBUGPROLONG', "checked");
+		}	
+  
+
+if (is_file($config_langdir . "config-ftpcachelogs.php")) {
+	include($config_langdir . "config-ftpcachelogs.php");
+}
+$smarty->assign('CONFIGSYSTEM', '1');
+$smarty->assign('CONFIGPAGE', 'ftpcachelogs');
+$smarty->assign('CONFIGSOURCE', '0');
+$smarty->assign('CENTRAL', 'config-ftpcachelogs.tpl');
+$smarty->display('skeleton.tpl');
+//$_COOKIE['lasturl'] = "panel.php"browserurl();
+
+
+
+?>

@@ -1,0 +1,10 @@
+<?php 
+$smarty->assign('LANG_INDEX_TITLE', "Dashboard");
+$smarty->assign('LANG_INDEX_SOURCE_TITLE', "Source");
+$smarty->assign('LANG_INDEX_SOURCE_AVAILABLESIZES', "Available sizes: ");
+$smarty->assign('LANG_INDEX_SOURCE_NOPICTURES', "No picture currently available");
+
+
+
+
+?>

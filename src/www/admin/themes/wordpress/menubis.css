@@ -1,0 +1,77 @@
+#nav, #nav ul 		{ /* toutes les listes */
+	padding		: 0 ;
+	margin		: 0 ;
+	list-style	: none ;
+	line-height	: 21px ;
+	text-align	: center ;
+}
+#nav			{
+	margin		: 0 0 1px 10px ;
+	font-weight	: bold ;
+	font-family 	: Arial ;
+	font-size 	: 12px ;
+/*	position		: relative ;*/
+	height		: 30px ;
+	voice-family	: "\"}\"" ;
+	voice-family	: inherit ;
+	height		: 20px ;
+}
+#nav a 			{
+	display		: block ;
+	padding		: 0 ;
+	background	: #eee ;		
+	color		: #333 ;
+	text-decoration: none ;
+	width		: 151px ;
+}
+#nav a:hover		{
+	color		: #fff ;
+	background	: #d00 ;
+}
+#nav .last		{
+	border-color	: #eee ;
+}
+#nav .last	a	{
+	border-width	: 1px 0 0 0  ;
+}
+#nav .last	#itwt	{
+	background	: #d00 ;
+	color				: #fff;
+}
+#nav li 			{ 
+	float		: left;
+	border-right	: 1px solid #fff ;
+
+}
+html>body #nav li{
+	border-right: 1px solid transparent ;
+}
+#nav li ul 		{ 
+	position		: absolute;
+	width		: 10em;
+	left			: -999em; 
+}
+#nav li ul li	{
+	border-top	: 1px solid #fff ;
+}
+html>body #nav li ul li		{
+	border-top	: 1px solid transparent;
+}
+#nav li ul li a	{
+	background	: transparent url("/c/0/i/menu.png") repeat ;
+}
+#nav li:hover ul ul, #nav li.sfhover ul ul {
+	left			: -999em;
+}
+
+#nav li:hover ul, #nav li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul {
+	left			: auto;
+	min-height:0;
+}
+#nav li ul ul 		{
+	margin		: -22px 0 0 151px ;
+	border-left	: 1px solid #fff ;
+}
+html>body #nav li ul ul		{
+	border-left	: 1px solid transparent ;
+}

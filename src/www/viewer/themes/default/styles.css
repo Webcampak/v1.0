@@ -1,0 +1,365 @@
+body { 
+  margin: 0; 
+  padding: 0; 
+  font-size: 0.8em;
+  line-height: 1.4;
+  color: white; 
+  background: #525252; 
+} 
+a { 
+  text-decoration: none; 
+} 
+a:link { 
+  color: #000; 
+} 
+a:visited { 
+  color: black; 
+} 
+a:hover, a:focus, a:active { 
+  text-decoration: underline;
+} 
+a:focus, a:active { 
+  outline: none; 
+} 
+
+#content {
+  width: 1150px; 
+  height: 817px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+h1 { 
+  font-weight: normal;
+  font-size: 20px; 
+  text-align: center;
+  line-height: 0.8;
+  color: #ffffff;
+  text-shadow: 0px 0px 5px #f1f1f1; 
+} 
+#wrap {
+	overflow:hidden;
+	text-align: center;
+} 
+
+
+div#overallbanner {
+  background: #c0c0c0;
+  border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;		    
+}
+
+div#banner {
+
+}
+
+div#banner select {
+
+}
+div#banner input {
+
+}
+
+div#bannerleftcolumn {
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;	
+	background: #c0c0c0;
+	color: #525252;
+}
+div#bannerrightcolumn {
+	float: right;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;	
+	background: #c0c0c0;
+}
+div#bannercenter {
+	overflow: hidden;
+	background: #c0c0c0;
+   text-align: center;	
+}
+
+div#leftcolumn {
+	float: left;
+	width: 350px;
+	margin-right: 10px;
+	background: #c0c0c0;
+  	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;		
+}
+div#leftcolumn a :visited {
+	color: black;		
+}
+div#rightcolumn {
+	float: right;
+	width: 150px;
+	margin-left: 10px;
+	background: #c0c0c0;
+  	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;		
+}
+div#center {
+	overflow: hidden;
+	background: #525252;
+   text-align: center;	
+}
+div#center a {
+  	color: #ffffff;	  	
+}
+div#calendar {
+   text-align: center;
+   width: 100%;	
+}
+div#calendar a :visited{
+  	color: #000;	
+}
+div#centerprevious {
+	float: left;
+	width: 150px;
+	margin-right: 10px;
+	background: #c0c0c0;
+	font-size: 16px;
+	border: 1px;
+  	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;  	
+}
+
+div#centerprevious :hover {
+	background: #989898;
+}
+div#centernext {
+	float: right;
+	width: 150px;
+	margin-left: 10px;
+	background: #c0c0c0;
+	font-size: 16px;
+	border: 1px;
+  	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;	  	
+}
+
+div#centernext :hover {
+	background: #989898;
+}
+
+div#centerdate {
+	overflow: hidden;
+	background: #525252;
+}
+div#joystick {
+   text-align: center;
+   width: 100%;
+}
+div#zoom {
+	margin-top: 5px;
+	margin-left: 45px;
+	width: 260px;
+	text-align: center;
+	background: #c0c0c0;	
+}
+div#zoomleftcolumn {
+	float: left;
+}
+div#zoomrightcolumn {
+	float: right;
+	width: 18px;
+	/*margin-left: 10px;*/
+}
+div#zoomcenter {
+	overflow: hidden;
+	background: #c0c0c0;
+   text-align: center;	
+}
+
+div#calendarday {
+   text-align: center;	
+}
+div#calendarday table{
+   width: 348px;
+   color: black;
+}
+
+div#calendarday a:hover{
+   border-top: 1px #fff solid;
+	background: #c0c0c0;
+	color: black;
+}
+#calendarday span {
+  /* We want a caption to display on the next line */
+  display: block;
+  /*margin-top: 3px;*/
+  text-align: center;
+  font-size: 10px;
+ /* color: #fff;*/
+}
+#calendarday span {
+  display: none;
+  /*margin-top: 3px;*/
+  text-align: center;
+  font-size: 10px;
+ /* color: #fff;*/
+}
+#calendarday a:hover span {
+  display: block;
+}
+
+.tableshowhour span {
+	display: none;
+}
+a.tableshowhour:hover span{
+	display: block;
+}
+
+.tabledispspanhour{
+	position: absolute;
+	background: white;
+	z-index: 10;
+	width: 30px;
+	margin-top: 10px;
+	margin-right: 10px;
+	text-align: center;
+	border-style: 2px black solid;
+}
+
+
+div.sc_menu {
+  /* Set it so we could calculate the offsetLeft */
+  position: relative;
+  height: 60px;
+  /*width: 300px;*/
+  /* Add scroll-bars */
+  overflow: auto;
+	background: #c0c0c0;  
+}
+ul.sc_menu {
+  display: block;
+  /* Max width here, for users without Javascript */
+  padding: 0px 0 0 0px;
+  /* Remove default margin */
+  margin: 0;
+  /*background: url('navigation.png');*/
+  list-style: none;
+	background: #c0c0c0;
+}
+.sc_menu li {
+  display: block;
+  float: left;
+  padding: 0 0 0 0;
+}
+.sc_menu a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 10px;
+}
+.sc_menu span {
+  /* We want a caption to display on the next line */
+  display: block;
+  /*margin-top: 3px;*/
+  text-align: center;
+  font-size: 10px;
+ /* color: #fff;*/
+}
+.sc_menu span {
+  display: none;
+  /*margin-top: 3px;*/
+  text-align: center;
+  font-size: 10px;
+ /* color: #fff;*/
+}
+.sc_menu a:hover span {
+  display: block;
+}
+.sc_menu a:visited {
+  color: #000;
+}
+.sc_menu img {
+	border: 0px;
+  /*border-top: 0px #fff solid;
+  border-bottom: 0px #fff solid;
+  border-left: 0px #fff solid; 
+  border-right: 0px #fff solid;*/
+}
+.sc_menu a:hover img {
+  filter:alpha(opacity=50);
+  opacity: 0.5;
+}
+
+#menu {
+	width: 100%;   
+}
+ul#ulmenu {
+	height: 25px ;
+	margin-top: 0px ;
+	padding: 0 ;
+	list-style-type: none ;
+}
+			
+ul#ulmenu li {
+	float: left ;
+	text-align: center ;
+}
+
+ul#ulmenu li :hover {
+	background: #989898;
+}
+	
+ul#ulmenu li a
+{
+	width: 140px ;
+	line-height: 25px ;
+	font-size: 1.1em ;
+	font-weight: bold ;
+	letter-spacing: 2px ;
+	color: #fff ;
+	display: block ;
+	text-decoration: none ;
+	border-right: 2px solid white ;
+}
+
+#loginbox {
+	position:absolute;
+	left:50%;
+	width:300px;
+	margin-top:250px;
+	margin-left:-150px;
+	text-align:left;
+	padding:15px;
+	border:1px solid #333;
+  	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;  		
+	background: #c0c0c0;
+	color: #525252;
+	}
+#loginerror {
+	color: red;
+}
+div#centercontent {
+	text-align: center;
+	background: #c0c0c0;
+  	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;		
+}
+
+#adminmenu {
+	width: 350px;
+}
+
+#adminmenu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#adminmenu li a {
+	font-size: 1.2em ;
+	font-weight: bold ;
+	letter-spacing: 2px ;
+	color: #fff ;
+	height: 32px;
+	height: 24px;
+	text-decoration: none;
+}
+
+#adminmenu li a:link, #menu3 li a:visited {
+	display: block;
+}
+
+#adminmenu li a:hover, #menu3 li a:active {
+	background: #989898;
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;		
+}

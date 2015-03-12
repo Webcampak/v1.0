@@ -1,0 +1,15 @@
+Hello,
+
+We noticed an unusual number of capture errors for this Webcampak source.
+
+Do not hesitate to check that all devices are operational and properly connected.
+
+More details about errors are available in enclosed log files.
+
+You will not receive any additional emails until the source is back online.
+
+Thanks,
+
+Your Webcampak 
+ 
+ 

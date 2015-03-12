@@ -1,0 +1,107 @@
+<?php
+// Copyright 2010 Infracom & Eurotechnia (support@webcampak.com)
+// This file is part of the Webcampak project.
+// Webcampak is free software: you can redistribute it and/or modify it 
+// under the terms of the GNU General Public License as published by 
+// the Free Software Foundation, either version 3 of the License, 
+// or (at your option) any later version.
+
+// Webcampak is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+// even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+// See the GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License along with Webcampak. 
+// If not, see http://www.gnu.org/licenses/.
+
+
+require("../../etc/config.php");
+require("include/zip.lib.php");
+
+
+$configsection = strip_tags($_GET['section']);
+$smarty->assign('CONFIGSECTION', $configsection);
+
+			//passthru("sudo /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " initconfsources");		 	
+		 	//$smarty->assign('POSTINITCONFS1', 'Réinitialisation source 4 ... OK');
+
+		if (strip_tags($_GET['motionstart']) == "1") {
+			passthru("sudo -u " . $config_systemuser . " /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " motionstart");		 		
+		}
+		if (strip_tags($_GET['motionstop']) == "1") {
+			passthru("sudo -u " . $config_systemuser . " /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " motionstop");		 				
+		}
+						
+		if (strip_tags($_GET['submit']) == "1") {	
+		   if (strip_tags($_POST['cfgmotiondetectionactivate']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfgmotiondetectionactivate", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfgmotiondetectionactivate", "no");
+			}
+		   if (strip_tags($_POST['cfgmotiondetectiononly']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfgmotiondetectiononly", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfgmotiondetectiononly", "no");
+			}			
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectiondevice", wito_replacechars(strip_tags($_POST['cfgmotiondetectiondevice'])));
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectiondevicewidth", wito_replacechars(strip_tags($_POST['cfgmotiondetectiondevicewidth'])));
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectiondeviceheight", wito_replacechars(strip_tags($_POST['cfgmotiondetectiondeviceheight'])));
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectionthreshold", wito_replacechars(strip_tags($_POST['cfgmotiondetectionthreshold'])));
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectionendevent", wito_replacechars(strip_tags($_POST['cfgmotiondetectionendevent'])));
+
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectioncapturevalue", wito_replacechars(strip_tags($_POST['cfgmotiondetectioncapturevalue'])));
+		 	wito_setconfig($config_witoconfig, "cfgmotiondetectioncaptureinterval", wito_replacechars(strip_tags($_POST['cfgmotiondetectioncaptureinterval'])));
+
+			wito_setconfig($config_witoconfig, "cfgmotiondetectionmask", wito_replacechars(strip_tags($_POST['cfgmotiondetectionmask'])));
+
+			passthru("sudo -u " . $config_systemuser . " /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " motionsetup");
+				
+		}
+
+		$webcamboxconfig = wito_getfullconfig($config_witoconfig);
+
+		if ($webcamboxconfig["cfgmotiondetectionactivate"] == "yes") {
+			$smarty->assign('CFGMOTIONDETECTIONACTIVATE', "checked");
+		}
+		if ($webcamboxconfig["cfgmotiondetectiononly"] == "yes") {
+			$smarty->assign('CFGMOTIONDETECTIONONLY', "checked");
+		}		
+		$smarty->assign('CFGMOTIONDETECTIONDEVICE', $webcamboxconfig["cfgmotiondetectiondevice"] );		
+		$smarty->assign('CFGMOTIONDETECTIONDEVICEWIDTH', $webcamboxconfig["cfgmotiondetectiondevicewidth"] );		
+		$smarty->assign('CFGMOTIONDETECTIONDEVICEHEIGHT', $webcamboxconfig["cfgmotiondetectiondeviceheight"] );		
+		$smarty->assign('CFGMOTIONDETECTIONTHRESHOLD', $webcamboxconfig["cfgmotiondetectionthreshold"] );		
+		$smarty->assign('CFGMOTIONDETECTIONENDEVENT', $webcamboxconfig["cfgmotiondetectionendevent"] );		
+
+		$smarty->assign('CFGMOTIONDETECTIONCAPTUREVALUE', $webcamboxconfig["cfgmotiondetectioncapturevalue"] );		
+		$smarty->assign('CFGMOTIONDETECTIONCAPTUREINTERVAL', $webcamboxconfig["cfgmotiondetectioncaptureinterval"] );		
+
+		$smarty->assign('CFGMOTIONDETECTIONMASK', $webcamboxconfig["cfgmotiondetectionmask"] );
+
+		passthru("sudo /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " motionstatus");		 		
+		$smarty->assign('DISPMOTIONSTATUS', file_get_contents("/tmp/motionstatus"));
+
+$cptwatermark = 0;
+$watermarkdir = opendir($config_watermarkdirectory); 
+while ($listwatermarkfile = readdir($watermarkdir)) {
+   if(is_file($config_watermarkdirectory.$listwatermarkfile) && substr($listwatermarkfile, -4,4) == ".pgm") {
+      //echo "Nom : ".$listwatermarkfile . "<br />";
+      $watermarkfiles[$cptwatermark] = $listwatermarkfile;
+      $cptwatermark++;
+   }
+} 
+closedir($watermarkdir);
+$smarty->assign('CPTWATERMARKFILES', $cptwatermark);
+$smarty->assign('WATERMARKFILES', $watermarkfiles);
+
+
+if (is_file($config_langdir . "config-motion.php")) {
+	include($config_langdir . "config-motion.php");
+}
+//$smarty->assign("BODYCONTENT", $smarty->template_dir . "index.tpl");
+$smarty->assign('CONFIGPAGE', 'motion');
+$smarty->assign('CENTRAL', 'config-motion.tpl');
+$smarty->display('skeleton.tpl');
+//$_COOKIE['lasturl'] = "panel.php"browserurl();
+
+
+
+?>

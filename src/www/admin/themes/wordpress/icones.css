@@ -1,0 +1,145 @@
+/*-----------------------------*/
+/* IMAGES DU HAUT DU SITE      */
+/*-----------------------------*/
+.browser {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 15px; 
+   height: 15px; 
+   /*background-image: url("img/browser_gray.gif");*/ 
+   background-image: url("img/browser.gif");
+   background-repeat: no-repeat;
+}	
+.browser:hover {
+	background-image: url("img/browser.gif");
+}
+
+.calc {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 15px; 
+   height: 15px; 
+   /*background-image: url("img/calc_gray.gif");*/
+   background-image: url("img/calc.gif");  
+   background-repeat: no-repeat;
+}	
+.calc:hover {
+	background-image: url("img/calc.gif");
+}
+
+.evolution {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 15px;
+   height: 15px; 
+   /*background-image: url("img/evolution-calendar_gray.gif");*/
+   background-image: url("img/evolution-calendar.gif");  
+   background-repeat: no-repeat;
+}	
+.evolution:hover {
+	background-image: url("img/evolution-calendar.gif");
+}
+
+.gedit {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	display: block; 
+   width: 15px; 
+   height: 15px; 
+   /*background-image: url("img/gedit-icon_gray.gif");*/
+   background-image: url("img/gedit-icon.gif");  
+   background-repeat: no-repeat;
+}	
+.gedit:hover {
+	background-image: url("img/gedit-icon.gif");
+}
+
+.gtk {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 15px; 
+   height: 15px; 
+   /*background-image: url("img/gtk-home_gray.gif");*/
+   background-image: url("img/gtk-home.gif");
+   background-repeat: no-repeat;
+}	
+.gtk:hover {
+	background-image: url("img/gtk-home.gif");
+}
+
+.logout {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 15px; 
+   height: 15px; 
+   /*background-image: url("img/logout_gray.gif");*/
+   background-image: url("img/logout.gif");
+   background-repeat: no-repeat;
+}	
+.logout:hover {
+	background-image: url("img/logout.gif");
+}
+
+
+.flagfrselected {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 24px; 
+   height: 15px; 
+   background-image: url("img/frflag.png");
+   background-repeat: no-repeat;
+}	
+
+.flagfr {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 24px; 
+   height: 15px; 
+   background-image: url("img/frflag_gray.png");
+   background-repeat: no-repeat;
+}	
+.flagfr:hover {
+	background-image: url("img/frflag.png");
+}
+
+.flagenselected {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 24px; 
+   height: 15px; 
+   background-image: url("img/enflag.png");
+   background-repeat: no-repeat;
+}	
+
+.flagen {
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;	
+	display: block; 
+   width: 24px; 
+   height: 15px; 
+   background-image: url("img/enflag_gray.png");
+   background-repeat: no-repeat;
+}	
+.flagen:hover {
+	background-image: url("img/enflag.png");
+}
+
+/*-------------------------------*/

@@ -1,0 +1,10 @@
+Hello,
+
+Webcampak just finished the creation of a custom video for this source.
+
+This video can be download via the viewer interface or via FTP in /videos/ directory of the source.
+
+Thanks, 
+
+Your Webcampak
+

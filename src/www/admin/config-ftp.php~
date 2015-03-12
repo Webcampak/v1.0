@@ -1,0 +1,171 @@
+<?php
+// Copyright 2010 Infracom & Eurotechnia (support@webcampak.com)
+// This file is part of the Webcampak project.
+// Webcampak is free software: you can redistribute it and/or modify it 
+// under the terms of the GNU General Public License as published by 
+// the Free Software Foundation, either version 3 of the License, 
+// or (at your option) any later version.
+
+// Webcampak is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+// even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+// See the GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License along with Webcampak. 
+// If not, see http://www.gnu.org/licenses/.
+
+
+require("../../etc/config.php");
+
+$configsection = strip_tags($_GET['section']);
+$smarty->assign('CONFIGSECTION', $configsection);
+  
+	if (strip_tags($_GET['captureftp']) == "1") {
+		//Lancer la capture de l'image, si la source est ipcam on ne capture pas
+		//$webcamboxconfig["cfgsourcetype")
+		$webcamboxconfig = wito_getfullconfig($config_witoconfig);		
+		if ($webcamboxconfig["cfgsourcetype"] == "ipcam" && strip_tags($_POST['ftptest']) == "sampleftp" ) {
+			$dispftpcapture = "Capture non compatible avec ce mode";
+		} else {
+			passthru("sudo -u " . $config_systemuser . " /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " " . strip_tags($_POST['ftptest']));
+			$dispftpcapture = file_get_contents("/tmp/ftpcapture");
+		}
+		$smarty->assign('DISPFTPCAPTURE', $dispftpcapture);	
+		//$smarty->assign('DSIPLAYCAPTURE', '1' );
+	}
+	if (strip_tags($_GET['ftpuserscreate']) == "1") {
+			wito_setconfig($config_witoconfig, "cfglocalftppass", wito_replacechars(strip_tags($_POST['cfglocalftppass'])));
+			passthru("sudo /usr/bin/php -f " . $config_bindirectory . "server.php -- " . $config_source . " createftpaccounts");
+	}	
+
+		if (strip_tags($_GET['submit']) == "1") {
+			wito_setconfig($config_witoconfig, "cfgftpserver", wito_replacechars(strip_tags($_POST['cfg_ftpserver'])));
+			wito_setconfig($config_witoconfig, "cfgftpuser", wito_replacechars(strip_tags($_POST['cfg_ftpuser'])));
+			wito_setconfig($config_witoconfig, "cfgftppassword", wito_replacechars(strip_tags($_POST['cfg_ftppassword'])));
+			wito_setconfig($config_witoconfig, "cfgftpdir", wito_replacechars(strip_tags($_POST['cfgftpdir'])));
+			wito_setconfig($config_witoconfig, "cfgftpphotosdir", wito_replacechars(strip_tags($_POST['cfg_ftpphotosdir'])));
+			wito_setconfig($config_witoconfig, "cfgftpvideosdir", wito_replacechars(strip_tags($_POST['cfg_ftpvideosdir'])));
+			wito_setconfig($config_witoconfig, "cfghotlinkftpserver", wito_replacechars(strip_tags($_POST['cfghotlinkftpserver'])));
+			wito_setconfig($config_witoconfig, "cfghotlinkftpuser", wito_replacechars(strip_tags($_POST['cfghotlinkftpuser'])));
+			wito_setconfig($config_witoconfig, "cfghotlinkftppassword", wito_replacechars(strip_tags($_POST['cfghotlinkftppassword'])));
+			wito_setconfig($config_witoconfig, "cfghotlinkftpdir", wito_replacechars(strip_tags($_POST['cfghotlinkftpdir'])));
+		   if (strip_tags($_POST['cfgftpactive']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfgftpactive", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfgftpactive", "no");
+			}
+		   //if (strip_tags($_POST['cfgftpcache']) == "yes") {
+			//	wito_setconfig($config_witoconfig, "cfgftpcache", "yes");	
+			//} else {
+			//	wito_setconfig($config_witoconfig, "cfgftpcache", "no");
+			//}
+		   //if (strip_tags($_POST['cfghotlinkftpcache']) == "yes") {
+			//	wito_setconfig($config_witoconfig, "cfghotlinkftpcache", "yes");	
+			//} else {
+			//	wito_setconfig($config_witoconfig, "cfghotlinkftpcache", "no");
+			//}					
+		   if (strip_tags($_POST['cfghotlinkftpactive']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfghotlinkftpactive", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfghotlinkftpactive", "no");
+			}			
+		   if (strip_tags($_POST['cfg_uploadarchive']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfguploadarchives", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfguploadarchives", "no");
+			}
+		   if (strip_tags($_POST['cfguploadhotlink']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfguploadhotlink", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfguploadhotlink", "no");
+			}			
+		   if (strip_tags($_POST['cfg_videoaviupload']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfgvideoaviupload", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfgvideoaviupload", "no");
+			}
+		   if (strip_tags($_POST['cfg_videoflvupload']) == "yes") {
+				wito_setconfig($config_witoconfig, "cfgvideoflvupload", "yes");	
+			} else {
+				wito_setconfig($config_witoconfig, "cfgvideoflvupload", "no");
+			}								
+		}	
+		//$smarty->assign('CFGFTPCACHE', $webcamboxconfig["cfgftpcache"]);
+		
+		//Chargement config
+		$webcamboxconfig = wito_getfullconfig($config_witoconfig);
+		//echo "----CFGLOCALFTPPASS = " . $we		$webcamboxconfig = wito_getfullconfig($config_witoconfig);bcamboxconfig["cfglocalftppass"] . "<br />";
+		$smarty->assign('CFGLOCALFTPPASS', $webcamboxconfig["cfglocalftppass"]);		
+		$smarty->assign('CFG_FTPSERVER', $webcamboxconfig["cfgftpserver"]);
+		$smarty->assign('CFG_FTPUSER', $webcamboxconfig["cfgftpuser"]);
+		$smarty->assign('CFG_FTPPASSWORD', $webcamboxconfig["cfgftppassword"]);
+		$smarty->assign('CFGFTPDIR', $webcamboxconfig["cfgftpdir"]);		
+		$smarty->assign('CFG_FTPPHOTOSDIR', $webcamboxconfig["cfgftpphotosdir"]);
+		$smarty->assign('CFG_FTPVIDEOSDIR', $webcamboxconfig["cfgftpvideosdir"]);
+		//$smarty->assign('CFGHOTLINKFTPCACHE', $webcamboxconfig["cfghotlinkftpcache"]);		
+		$smarty->assign('CFGHOTLINKFTPSERVER', $webcamboxconfig["cfghotlinkftpserver"]);
+		$smarty->assign('CFGHOTLINKFTPUSER', $webcamboxconfig["cfghotlinkftpuser"]);
+		$smarty->assign('CFGHOTLINKFTPPASSWORD', $webcamboxconfig["cfghotlinkftppassword"]);
+		$smarty->assign('CFGHOTLINKFTPDIR', $webcamboxconfig["cfghotlinkftpdir"]);			
+		if ($webcamboxconfig["cfghotlinkftpactive"] == "yes") {
+			$smarty->assign('CFGHOTLINKFTPACTIVE', "checked");
+		}
+		//if ($webcamboxconfig["cfgftpcache"] == "yes") {
+		//	$smarty->assign('CFGFTPCACHE', "checked");
+		//}	
+		//if ($webcamboxconfig["cfghotlinkftpcache"] == "yes") {
+		//	$smarty->assign('CFGHOTLINKFTPCACHE', "checked");
+		//}					
+		if ($webcamboxconfig["cfgftpactive"] == "yes") {
+			$smarty->assign('CFGFTPACTIVE', "checked");
+		}	
+		if ($webcamboxconfig["cfguploadhotlink"] == "yes") {
+			$smarty->assign('CFGUPLOADHOTLINK', "checked");
+		}	
+		if ($webcamboxconfig["cfguploadarchives"] == "yes") {
+			$smarty->assign('CFG_UPLOADARCHIVE', "checked");
+		}		
+		if ($webcamboxconfig["cfgvideoaviupload"] == "yes") {
+			$smarty->assign('CFG_VIDEOAVIUPLOAD', "checked");
+		}
+		if ($webcamboxconfig["cfgvideoflvupload"] == "yes") {
+			$smarty->assign('CFG_VIDEOFLVUPLOAD', "checked");
+		}
+		if ($webcamboxconfig["cfgnocapture"] == "yes") {
+			$smarty->assign('CFGNOCAPTURE', "checked");
+		}			
+
+$cpthour = 0;
+for ($i=-1;$i<23;$i++) { 
+	$hourtxt[$cpthour] = $i + 1;
+	if ($hourtxt[$cpthour] < 10) {
+		$hourtxt[$cpthour] = "0" . $hourtxt[$cpthour];
+	}
+	$cpthour++;
+}
+$smarty->assign('CPTHOUR', $cpthour);
+$smarty->assign('HOURTXT', $hourtxt);
+
+$cptminute = 0;
+for ($i=-1;$i<59;$i++) {
+	$minutetxt[$cptminute] = $i + 1;
+	if ($minutetxt[$cptminute] < 10) {
+		$minutetxt[$cptminute] = "0" . $minutetxt[$cptminute];
+	}	
+	$cptminute++;
+}
+$smarty->assign('CPTMINUTE', $cptminute);
+$smarty->assign('MINUTETXT', $minutetxt);
+
+
+if (is_file($config_langdir . "config-ftp.php")) {
+	include($config_langdir . "config-ftp.php");
+}
+//$smarty->assign("BODYCONTENT", $smarty->template_dir . "index.tpl");
+$smarty->assign('CONFIGPAGE', 'ftp');
+$smarty->assign('CENTRAL', 'config-ftp.tpl');
+$smarty->display('skeleton.tpl');
+//$_COOKIE['lasturl'] = "panel.php"browserurl();
+
+
+
+?>

@@ -1,0 +1,50 @@
+#!/bin/bash
+# Copyright 2012 Infracom & Eurotechnia (support@webcampak.com)
+# This file is part of the Webcampak project.
+# Webcampak is free software: you can redistribute it and/or modify it 
+# under the terms of the GNU General Public License as published by 
+# the Free Software Foundation, either version 3 of the License, 
+# or (at your option) any later version.
+
+# Webcampak is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+# See the GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along with Webcampak. 
+# If not, see http://www.gnu.org/licenses/
+ 
+# FTP Servers configuration 
+# ------------------------------
+# cfgftpserversnb: Number of FTP servers available by default
+# cfgftpserverslistX: FTP Server: ID, Host, Username, Password, Directory, Active
+cfgftpserverslistnb="30"
+cfgftpserverslist1="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist2="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist3="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist4="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist5="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist6="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist7="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist8="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist9="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist10="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist11="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist12="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist13="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist14="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist15="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist16="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist17="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist18="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist19="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist20="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist21="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist22="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist23="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist24="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist25="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist26="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist27="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist28="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist29="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"
+cfgftpserverslist30="notconfigured", "DNS or IP", "Username", "Password", "Directory", "no"

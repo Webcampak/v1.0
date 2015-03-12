@@ -1,0 +1,12 @@
+Hello,
+
+Webcampak just finished processing post-prod for this source.
+
+Pictures are available in /pictures/process-videopost/ directory of the source or within /pictures/ directory of a different source if you requested pictures to be transfered.
+
+This video can be download via the viewer interface or via FTP in /videos/ directory of the source.
+
+Thanks, 
+
+Your Webcampak
+
